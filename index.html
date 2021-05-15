@@ -804,11 +804,28 @@ Come and join the revolutionized new era of web designing.
                 event.preventDefault();
                 event.stopPropagation();
               }
-                else{
-                  $("#myModal").modal();
+                else if (form.checkValidity() === true) {
+                    event.preventDefault();
+                    $.ajax({
+                    url:"https://script.google.com/macros/s/AKfycbxNCuHPT-kZ4a-t1rd-0_yXwjoRUZPE4CCCg17Y9nKrhFM4_j7H3cfK9lw9xPQv5O3MTQ/exec",
+                    data:$("#submit-form").serialize(),
+                    method:"post",
+                    success:function (response){
+                      alert("Form submitted successfully")
+                      window.location.reload()
+                      //window.location.href="https://google.com"
+                    },
+                    error:function (err){
+                      alert("Something Error")
+
+                    }
+                    })
+
+                  }
+                  
 
 
-              }
+              
               form.classList.add('was-validated');
             }, false);
           });
@@ -820,7 +837,7 @@ Come and join the revolutionized new era of web designing.
 
       </script>
 
-<script>
+<!--<script>
   $("#submit-form").submit((e)=>{
       e.preventDefault()
       $.ajax({
@@ -838,7 +855,7 @@ Come and join the revolutionized new era of web designing.
           }
       })
   })
-</script>
+</script>-->
     <script src="js/scripts-dist.js"></script>
     <script src="js/main.js"></script>
 
